@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.form-control input{
+    height: 50px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    border-width: 1px;
+}
+
+.form-control label, .label{
+    font-style: normal;
+    font-size: 20px;
+    font-weight: 700;
+}
+.create-post{
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+.form-control{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.publish{
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #000;
+    color: aliceblue;
+}
+
+.publish:hover{
+    background-color: #d7d7d7;
+    color: rgb(74, 72, 72);
+}
