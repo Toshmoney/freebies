@@ -39,7 +39,7 @@ const Home = () => {
                     </a>
                     </div>
                     <p>{post.summary}</p>
-                    {/* <div dangerouslySetInnerHTML={{__html: post.content}} /> */}
+                    <div dangerouslySetInnerHTML={{__html: post.content}} />
                   </div>
                 </div>
               )
