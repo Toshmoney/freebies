@@ -11,7 +11,7 @@ console.log("comment page "+ id);
 
 
   useEffect(() => {
-    fetch(`http://localhost:1000/post/${id}/comments`)
+    fetch(`https://homeworktips-22mg.onrender.com/post/${id}/comments`)
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -29,7 +29,7 @@ console.log("comment page "+ id);
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`http://localhost:1000/post/${id}/comment`, {
+    const response = await fetch(`https://homeworktips-22mg.onrender.com/post/${id}/comment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
