@@ -35,7 +35,7 @@ export default function PostPage() {
 
   return (
     <div className="post-page w-[100%] flex flex-col gap-2 items-center mt-5">
-      <h1 className="text-2xl font-semibold m-2">{postInfo.title}</h1>
+      <h1 className="md:text-2xl font-semibold m-2 text-center text-sm">{postInfo.title}</h1>
       <time className="text-lime-500">{formatISO9075(new Date(postInfo.createdAt))}</time>
       <div className="text-[18px] font-semibold text-gray-400">Views {postInfo.views}</div>
       <div className="author text-[16px] font-medium">by @{postInfo.author}</div>
