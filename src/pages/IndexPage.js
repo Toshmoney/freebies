@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import Post from "../Post";
 import {formatISO9075} from "date-fns";
 import { UserContext } from "../UserContext";
-import LoginPage from "../pages/LoginPage"
+// import LoginPage from "../pages/LoginPage"
 import { Link } from "react-router-dom";
 
 export default function IndexPage() {
@@ -47,7 +47,7 @@ export default function IndexPage() {
     } catch (error) {
       console.error('Error fetching posts:', error);
     }
-  }, []);
+  }, [setUserInfo]);
 
   const username = userInfo?.user?.username;
 

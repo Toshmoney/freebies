@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "./UserContext";
 
 export default function Header() {
@@ -47,7 +47,7 @@ export default function Header() {
             <Link to="/profile">Profile</Link>
             <Link to="/posts">Posts</Link>
             <Link to="/earnings">Earnings</Link>
-            <a onClick={logout} className="text-[red] cursor-pointer">Logout ({username})</a>
+            <a onClick={logout} href="/login" className="text-[red] cursor-pointer">Logout ({username})</a>
           </div>
         ) : (
           <div className="flex gap-5 text-[18px]">

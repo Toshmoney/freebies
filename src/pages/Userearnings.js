@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { UserContext } from '../UserContext';
+import React, { useState, useEffect } from 'react';
+// import { UserContext } from '../UserContext';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function EarningsPage() {
-  const { userInfo } = useContext(UserContext);
+  // const { userInfo } = useContext(UserContext);
   const [earnings, setEarnings] = useState(0);
   const [posts, setPosts] = useState([]);
 
