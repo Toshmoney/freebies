@@ -4,11 +4,6 @@ export default function Post({_id,title,summary,image,content,createdAt,author, 
 
   return (
     <div className="post">
-      <div className="image">
-        <Link to={slug}>
-          <img src={image} alt={""}/>
-        </Link>
-      </div>
       <div className="flex flex-col gap-2 border-2 border-[#51B73B] border-double rounded-lg p-4">
         <Link to={`https://homeworktips.vercel.app/${slug}`}>
         <h2 className="text-[26px] capitalize font-[500] hover:underline">{title}</h2>
