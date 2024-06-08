@@ -5,6 +5,7 @@ import { UserContext } from "../UserContext";
 import { Link } from 'react-router-dom';
 import Comments from './Comment';
 import { toast } from 'react-toastify';
+import Footer from "../Footer";
 
 export default function PostPage() {
   const [postInfo, setPostInfo] = useState(null);
