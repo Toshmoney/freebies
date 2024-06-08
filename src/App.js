@@ -16,6 +16,7 @@ import EditPost from "./pages/EditPost";
 import Profile from "./pages/Profile";
 import UpdateProfile from "./pages/Updateprofile";
 import MyPosts from "./pages/Mypost";
+import EarningsPage from "./pages/Userearnings";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/update-profile" element={<UpdateProfile />} />
           <Route path="/posts" element={<MyPosts />} />
+          <Route path="/earnings" element={<EarningsPage />} />
         </Route>
       </Routes>
       </Router>
