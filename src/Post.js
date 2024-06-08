@@ -14,7 +14,7 @@ export default function Post({_id,title,summary,image,content,createdAt,author, 
         <h2 className="text-[26px] capitalize font-[500] hover:underline">{title}</h2>
         </Link>
         <p className="flex gap-2">
-          <a className="author text-lime-800 font-semibold" href="#auth">Author: {author?.username}</a>
+          <a className="author text-lime-800 font-semibold" href="#auth">by @{author?.username}</a>
           <time className=" text-lime-500">{formatISO9075(new Date(createdAt))}</time>
         </p>
         <p className="summary">{summary}</p>

@@ -56,7 +56,7 @@ console.log("comment page "+ id);
       {comments.length > 0 ? (
         comments.map(comment => (
           <div key={comment._id} className="comment mb-2 flex flex-col w-full gap-5">
-            <p className="w-[50%]">Username - <strong> {comment?.author?.username}:</strong> <br/>Comments - {comment?.text}</p>
+            <p className="w-[100%]">Username - <strong> {comment?.author?.username || "Anonymous"}:</strong> <br/>Comments - {comment?.text}</p>
           </div>
         ))
       ) : (
