@@ -15,7 +15,7 @@ export default function PostPage() {
   console.log("post url:  " + id);
 
   useEffect(() => {
-    fetch(`http://localhost:1000/post/${id}`)
+    fetch(`https://homeworktips-22mg.onrender.com/post/${id}`)
       .then(response => {
         if (response.ok) {
           response.json().then(postInfo => {

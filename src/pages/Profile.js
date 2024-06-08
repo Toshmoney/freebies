@@ -10,7 +10,7 @@ export default function Profile() {
       <h2 className='text-2xl font-semibold'>Homeworktips User Profile</h2>
       <div className='flex flex-col gap-5'>
         <div>
-          <img src={`http://localhost:1000/uploads/${userInfo?.user?.profilePicture}`} alt="Profile"
+          <img src={`https://homeworktips-22mg.onrender.com/uploads/${userInfo?.user?.profilePicture}`} alt="Profile"
             className='h-[20vh] rounded-full border-2 border-[#51B73B]' />
         </div>
         <p>My Profile Description <br/> {userInfo?.user?.profileDescription || "Update your profile to set profile description"}</p>

@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RegisterPage() {
   const { setUserInfo } = useContext(UserContext);
@@ -8,28 +10,24 @@ export default function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmpassword, setConfirmpassword] = useState('');
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(false);
 
   async function register(ev) {
     ev.preventDefault();
-    setError(null);
-    setSuccess(null);
     setLoading(true);
 
     if (!username || !email || !password) {
       setLoading(false);
-      return setError("All fields are required!");
+      return toast.error("All fields are required!");
     }
 
     if (password !== confirmpassword) {
       setLoading(false);
-      return setError("Password and confirm password do not match!");
+      return toast.error("Password and confirm password do not match!");
     }
 
     try {
-      const response = await fetch('http://localhost:1000/user/register', {
+      const response = await fetch('https://homeworktips-22mg.onrender.com/user/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password }),
@@ -40,24 +38,21 @@ export default function RegisterPage() {
 
       if (response.status === 201) {
         setUserInfo({ username, email, token: data.token });
-        setSuccess('Registration successful');
+        toast.success('Registration successful');
       } else {
-        setError(data.error || 'Registration failed');
+        toast.error(data.error || 'Registration failed');
       }
     } catch (error) {
       setLoading(false);
-      setError('An error occurred. Please try again.');
+      toast.error('An error occurred. Please try again.');
     }
   }
 
   return (
     <div className="flex flex-col w-full justify-center h-[87vh] items-center gap-5">
+      <ToastContainer />
       <form className="flex flex-col md:w-[50%] w-full justify-center items-center gap-5" onSubmit={register}>
         <h1 className="text-[23px]">Register To Get Started</h1>
-        
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        {success && <p style={{ color: 'green' }}>{success}</p>}
-        {loading && <p>Loading...</p>}
         
         <div className="flex flex-col w-[80%] gap-3">
           <label className="font-semibold text-[20px]">Username</label>

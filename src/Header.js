@@ -9,7 +9,7 @@ export default function Header() {
     const fetchProfile = async () => {
       const token = localStorage.getItem('token');
       if (token) {
-        const response = await fetch('http://localhost:1000/profile', {
+        const response = await fetch('https://homeworktips-22mg.onrender.com/profile', {
           headers: {
             'Authorization': `Bearer ${token}`
           },

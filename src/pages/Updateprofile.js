@@ -25,7 +25,7 @@ export default function UpdateProfile() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:1000/update-profile', {
+      const response = await fetch('https://homeworktips-22mg.onrender.com/update-profile', {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`

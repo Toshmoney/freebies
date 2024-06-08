@@ -1,22 +1,22 @@
 import { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [redirect, setRedirect] = useState(false);
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { setUserInfo } = useContext(UserContext);
 
   async function login(ev) {
     ev.preventDefault();
     setLoading(true);
-    setError(null);
 
     try {
-      const response = await fetch('http://localhost:1000/user/login', {
+      const response = await fetch('https://homeworktips-22mg.onrender.com/user/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },
@@ -29,13 +29,14 @@ export default function LoginPage() {
         setUserInfo(data.user);
         localStorage.setItem('user', JSON.stringify(data.user));
         localStorage.setItem('token', data.token);
+        toast.success("Login successful");
         setRedirect(true);
       } else {
-        setError(data.error || 'Wrong credentials');
+        toast.error(data.error || 'Wrong credentials');
       }
     } catch (err) {
       setLoading(false);
-      setError('An error occurred. Please try again.');
+      toast.error('An error occurred. Please try again.');
     }
   }
 
@@ -45,11 +46,9 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col w-full justify-center h-[87vh] items-center gap-5">
+      <ToastContainer />
       <form className="flex flex-col md:w-[50%] w-full justify-center items-center gap-5" onSubmit={login}>
         <h1 className="text-[23px]">Please Login</h1>
-        
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        {loading && <p>Loading...</p>}
         
         <div className="flex flex-col w-[80%] gap-3">
           <label className="font-semibold text-[20px]">Email</label>
