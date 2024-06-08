@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import {Navigate} from "react-router-dom";
 import "./login.css";
 
-const Login = () => {
+const Forgotpassword = () => {
     const [userDetails, setUserDetails] = useState({
-        username : "",
-        password: ""
+        email : "",
     });
     const [redirect, setRedirect] = useState(false)
 
@@ -35,13 +34,11 @@ const Login = () => {
 
   return (
     <div className='container'>
-        <h2>Welcome Back!</h2>
+        <h2>Forgot Pasword</h2>
         <form onSubmit={handleLogin}>
-                <label htmlFor="username">Username </label>
+                <label htmlFor="username">Email </label>
                 <input type="text" placeholder='username' name='username' id='username' value={userDetails.username} onChange={handleChange} />
 
-                <label htmlFor="password">Password</label>
-                <input type="password" name='password' id='password' placeholder='password' value={userDetails.password} onChange={handleChange} />
                 <div>
                     <button type="submit" className='login'>Login</button>
                 </div>
@@ -51,4 +48,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Forgotpassword

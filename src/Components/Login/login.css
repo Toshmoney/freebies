@@ -12,18 +12,18 @@
     justify-content: center;
     height: 100vh;
     gap: 50px;
-    background-color: orange;
+    background-color: transparent;
 }
 
 .container h2{
-    font-size: 40px;
+    font-size:30px;
 }
 
 .container form{
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 70%;
+    gap: 15px;
+    width: 30%;
 
 }
 
@@ -31,31 +31,50 @@
     width: 100%;
     height: 50px;
     padding: 10px;
-    border-width: 2px;
-    border-color: orange;
+    border-width: 1px;
+    border-color: rgb(159, 165, 204);
     border-radius: 10px;
     outline-color: thistle;
+    background-color: transparent;
 }
 
 .container form label{
     font-weight: 700;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .login{
-    padding: 17px;
+    padding: 17px 45px;
     font-size: 20px;
     font-weight: 700;
     border-radius: 10px;
+    transition: ease-in-out 0.5s;
     border-color: transparent;
     cursor: pointer;
     background-color: black;
     color: bisque;
     letter-spacing: 7px;
+    margin-top: 10px;
 }
 
 .login:hover{
-    background-color:transparent;
-    color: #000;
-    border: 2px solid #000;
+    background-color:rgb(70, 68, 68);
+}
+
+@media screen and (max-width:950px) {
+    .login{
+        padding: 10px 30px;
+    }
+
+    .container form{
+        width: 80%;
+    }
+
+    .container h2{
+        font-size: 25px;
+    }
+
+    .container form label{
+        font-size: 18px;
+    }
 }

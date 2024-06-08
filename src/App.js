@@ -1,20 +1,42 @@
-import './App.css';
-import Home from './Components/Home/Home';
-import Login from "./Components/Login/Login";
-import CreatePost from './Components/Posts/CreatePost';
-import Signup from "./Components/Signup/Signup";
+// import './App.css';
+import Post from "./Post";
+import Header from "./Header";
+// import {Route, Routes} from "react-router-dom";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Layout from "./Layout";
+import IndexPage from "./pages/IndexPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import {UserContextProvider} from "./UserContext";
+import CreatePost from "./pages/CreatePost";
+import PostPage from "./pages/PostPage";
+import EditPost from "./pages/EditPost";
+import Profile from "./pages/Profile";
+import UpdateProfile from "./pages/Updateprofile";
+import MyPosts from "./pages/Mypost";
 
 function App() {
   return (
-    <Router>
-    <Routes>
-      <Route index element={<Home/>}  />
-      <Route path='/login' element={<Login/>} />
-      <Route path='/register' element={<Signup/>} />
-      <Route path='/create-post' element={<CreatePost/>}/>
-    </Routes>
-    </Router>
+    <UserContextProvider>
+      <Router>
+      <ToastContainer />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<IndexPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/create" element={<CreatePost />} />
+          <Route path="/:id" element={<PostPage />} />
+          <Route path="/edit/:id" element={<EditPost />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/update-profile" element={<UpdateProfile />} />
+          <Route path="/posts" element={<MyPosts />} />
+        </Route>
+      </Routes>
+      </Router>
+    </UserContextProvider>
   );
 }
 

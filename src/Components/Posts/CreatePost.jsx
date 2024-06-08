@@ -38,7 +38,10 @@ const CreatePost = () => {
       try {
         const response = await fetch("http://localhost:1000/create-post",{
           method:"POST",
-          body:data
+          body:data,
+          headers:{
+            "Authorization":"token"
+          }
         })
 
         if(response.ok){

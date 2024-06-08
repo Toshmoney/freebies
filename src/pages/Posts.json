@@ -1,0 +1,61 @@
+[
+    {
+        "title":"First day blog post",
+        "summary":"It's all about day 1 content It's all about day 1 content It's all about day 1 content It's all about day 1 content It's all about day 1 content It's all about day 1 content",
+        "createdAt":"2023-05-07",
+        "content":"Wow the day 1 blog post is amazing ... Click for more update",
+        "slug":"first",
+        "image":"../assets/images/ceo_photo.jpg",
+        "author":"Tosh"
+    },
+    {
+        "title":"Second day blog post",
+        "summary":"It's all about day 2 content",
+        "createdAt":"2023-05-07",
+        "content":"Wow the day 2 blog post is amazing ... Click for more update",
+         "slug":"second",
+        "image":"second.png",
+        "author":"Tosh"
+
+    },
+    {
+        "title":"Third day blog post",
+        "summary":"It's all about day 3 content",
+        "createdAt":"2023-05-07",
+        "content":"Wow the day 3 blog post is amazing ... Click for more update",
+         "slug":"third",
+        "image":"third.png",
+        "author":"Tosh"
+
+    },
+    {
+        "title":"Fourth day blog post",
+        "summary":"It's all about day 4 content",
+        "createdAt":"2023-05-07",
+        "content":"Wow the day 4 blog post is amazing ... Click for more update",
+         "slug":"fourth",
+        "image":"../assets/images/ceo_photo.jpg",
+        "author":"Tosh"
+    },
+    {
+        "title":"Fifth day blog post",
+        "summary":"It's all about day 5 content",
+        "createdAt":"2023-05-07",
+        "content":"Wow the day 5 blog post is amazing ... Click for more update",
+         "slug":"fifth",
+        "image":"fifth.png",
+        "author":"Tosh"
+
+    },
+    {
+        "title":"Sixth day blog post",
+        "summary":"It's all about day 6 content",
+        "createdAt":"2023-05-07",
+        "content":"Wow the day 6 blog post is amazing ... Click for more update",
+         "slug":"sixth",
+        "image":"sixth.png",
+        "author":"Tosh"
+
+    }
+]
+
