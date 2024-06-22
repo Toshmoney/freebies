@@ -13,6 +13,7 @@ import Profile from "./pages/Profile";
 import UpdateProfile from "./pages/Updateprofile";
 import MyPosts from "./pages/Mypost";
 import EarningsPage from "./pages/Userearnings";
+import AuthorProfile from "./pages/Authorprofile";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/create" element={<CreatePost />} />
           <Route path="/:id" element={<PostPage />} />
           <Route path="/edit/:id" element={<EditPost />} />
+          <Route path="/author/:id" element={<AuthorProfile />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/update-profile" element={<UpdateProfile />} />
           <Route path="/posts" element={<MyPosts />} />
