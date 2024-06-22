@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { UserContext } from "./UserContext";
 
@@ -38,7 +37,7 @@ export default function Header() {
 
   return (
     <header className="flex flex-col md:justify-center w-full md:h-[100px] items-center gap-4 md:bg-[transparent] justify-center">
-      <Link to="/" className=" text-[28px] font-bold text-[#51B73B]">Homeworktips</Link>
+      <a href="/" className=" text-[28px] font-bold text-[#51B73B]">Homeworktips</a>
       <nav className="w-full flex justify-center">
         {username ? (
           <div className="flex gap-5 items-center text-[16px] md:flex-row flex-col">

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -94,7 +94,7 @@ export default function LoginPage() {
             {loading ? 'Logging in...' : 'Login'}
           </button>
         </div>
-        <p>Don't have an account? <Link to={'/register'}>Sign up now</Link></p>
+        <p>Don't have an account? <a href='/register'>Sign up now</a></p>
       </form>
     </div>
   );

@@ -1,34 +1,51 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import profilepic from "../assets/images/logo123.jpg";
 import { UserContext } from "../UserContext";
+import Post from "../Post";
 
 const AuthorProfile = () => {
   const { id } = useParams();
   const { userInfo } = useContext(UserContext);
   const [author, setAuthor] = useState(null);
   const [isFollowing, setIsFollowing] = useState(false);
+  const [posts, setPosts] = useState([]);
+
+  const fetchAuthor = useCallback(async () => {
+    try {
+      const response = await fetch(`https://homeworktips-22mg.onrender.com/writer/${id}`);
+      if (response.ok) {
+        const data = await response.json();
+        setAuthor(data);
+        if (data.followers) {
+          setIsFollowing(data.followers.includes(userInfo.user._id));
+        }
+      } else {
+        console.error('Failed to fetch author info');
+      }
+    } catch (error) {
+      console.error('Error fetching author info:', error);
+    }
+  }, [id, userInfo]);
+
+  const fetchAuthorPosts = useCallback(async () => {
+    try {
+      const response = await fetch(`https://homeworktips-22mg.onrender.com/author/${id}/posts`);
+      if (response.ok) {
+        const data = await response.json();
+        setPosts(data);
+      } else {
+        console.error('Failed to fetch author posts');
+      }
+    } catch (error) {
+      console.error('Error fetching author posts:', error);
+    }
+  }, [id]);
 
   useEffect(() => {
-    const fetchAuthor = async () => {
-      try {
-        const response = await fetch(`https://homeworktips-22mg.onrender.com/writer/${id}`);
-        if (response.ok) {
-          const data = await response.json();
-          setAuthor(data);
-          if (data.followers) {
-            setIsFollowing(data.followers.includes(userInfo.userId));
-          }
-        } else {
-          console.error('Failed to fetch author info');
-        }
-      } catch (error) {
-        console.error('Error fetching author info:', error);
-      }
-    };
-
     fetchAuthor();
-  }, [id, userInfo]);
+    fetchAuthorPosts();
+  }, [fetchAuthor, fetchAuthorPosts]);
 
   const handleFollow = async () => {
     try {
@@ -38,11 +55,12 @@ const AuthorProfile = () => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
-        body: JSON.stringify({ currentUserId: userInfo.userId })
+        body: JSON.stringify({ currentUserId: userInfo.user._id })
       });
 
       if (response.ok) {
         setIsFollowing(true);
+        fetchAuthor(); // Update author data
       } else {
         console.error('Failed to follow user');
       }
@@ -59,11 +77,12 @@ const AuthorProfile = () => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
-        body: JSON.stringify({ currentUserId: userInfo.userId })
+        body: JSON.stringify({ currentUserId: userInfo.user._id })
       });
 
       if (response.ok) {
         setIsFollowing(false);
+        fetchAuthor(); // Update author data
       } else {
         console.error('Failed to unfollow user');
       }
@@ -100,6 +119,15 @@ const AuthorProfile = () => {
           </button>
         )
       )}
+
+      <div className="w-full mt-5">
+        <h2 className="text-2xl font-bold mb-3">Posts by {author.username}</h2>
+        <div className="flex flex-col gap-4">
+          {posts.map((post) => (
+            <Post key={post._id} {...post} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

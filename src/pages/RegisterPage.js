@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -122,7 +121,7 @@ export default function RegisterPage() {
             {loading ? 'Registering...' : 'Register'}
           </button>
         </div>
-        <p>Already have an account? <Link to={'/login'}>Login now</Link></p>
+        <p>Already have an account? <a href='/login'>Login now</a></p>
       </form>
     </div>
   );
