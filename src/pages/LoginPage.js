@@ -94,7 +94,6 @@ export default function LoginPage() {
             {loading ? 'Logging in...' : 'Login'}
           </button>
         </div>
-        
         <p>Don't have an account? <Link to={'/register'}>Sign up now</Link></p>
       </form>
     </div>
