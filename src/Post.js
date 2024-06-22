@@ -5,7 +5,7 @@ export default function Post({_id,title,summary,image,content,createdAt,author, 
   return (
     <div className="post">
       <div className="flex flex-col gap-2 border-2 border-[#51B73B] border-double rounded-lg p-4">
-        <Link to={`https://homeworktips.vercel.app/${slug}`}>
+        <Link to={`https://homeworktips.info/${slug}`}>
         <h2 className="text-[26px] capitalize font-[500] hover:underline">{title}</h2>
         </Link>
         <p className="flex gap-2">
