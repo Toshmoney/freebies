@@ -3,9 +3,13 @@ import { Helmet } from 'react-helmet';
 
 const AdComponent = ({ adSlot }) => {
     useEffect(() => {
-        if (window) {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-        }
+        const timer = setTimeout(() => {
+            if (window) {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+            }
+        }, 100); // Delay by 100ms
+
+        return () => clearTimeout(timer);
     }, []);
 
     return (
@@ -24,3 +28,4 @@ const AdComponent = ({ adSlot }) => {
 };
 
 export default AdComponent;
+

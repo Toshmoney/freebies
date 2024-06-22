@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Comments from './Comment';
 import { toast } from 'react-toastify';
 import { Helmet } from "react-helmet";
+import AdComponent from "./adComponent";
 
 export default function PostPage() {
   const [postInfo, setPostInfo] = useState(null);
@@ -50,6 +51,12 @@ export default function PostPage() {
       <time className="text-lime-500">{formatISO9075(new Date(postInfo.createdAt))}</time>
       <div className="text-[16px] font-semibold text-gray-400">Views {postInfo.views}</div>
       <div className="author text-[16px] font-medium">by @{postInfo.author}</div>
+
+{/* Adsense code snippet ... Don't touch it oo */}
+      <div style={{ width: '100%', height: '90px' }}>
+            <AdComponent adSlot="4876440975" />
+      </div>
+
       {userInfo && userInfo?.user?.username === postInfo.author && (
         <div className="">
           <Link className="flex flex-row-reverse gap-3 bg-[#51B73B] py-2 px-5 rounded text-white mt-3" to={`/edit/${postInfo.slug}`}>
@@ -68,6 +75,11 @@ export default function PostPage() {
       <div className="flex w-full items-center justify-center">
         <div className="flex flex-col w-[80%] gap-3" dangerouslySetInnerHTML={{ __html: postInfo.content }} />
       </div>
+{/* Adsense code snippet ... Don't touch it oo */}
+      <div style={{ width: '100%', height: '90px' }}>
+            <AdComponent adSlot="4876440975" />
+      </div>
+
       <Comments postId={id} />
     </div>
   );

@@ -2,7 +2,6 @@ import { useEffect, useState, useContext } from "react";
 import Post from "../Post";
 import {formatISO9075} from "date-fns";
 import { UserContext } from "../UserContext";
-// import LoginPage from "../pages/LoginPage"
 import { Link } from "react-router-dom";
 
 export default function IndexPage() {
