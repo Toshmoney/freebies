@@ -1,12 +1,13 @@
 import { useEffect, useState, useContext } from "react";
 import Post from "../Post";
-import {formatISO9075} from "date-fns";
+import { formatISO9075 } from "date-fns";
 import { UserContext } from "../UserContext";
 import { Link } from "react-router-dom";
 
 export default function IndexPage() {
   const { setUserInfo, userInfo } = useContext(UserContext);
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -31,21 +32,24 @@ export default function IndexPage() {
       }
     };
 
-    fetchProfile();
-
-    try {
-      fetch('https://homeworktips-22mg.onrender.com/all-posts').then(response => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch('https://homeworktips-22mg.onrender.com/all-posts');
         if (response.ok) {
-          response.json().then(posts => {
-            setPosts(posts);
-          });
+          const posts = await response.json();
+          setPosts(posts);
         } else {
           console.error('Failed to fetch posts:', response.status);
         }
-      });
-    } catch (error) {
-      console.error('Error fetching posts:', error);
-    }
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProfile();
+    fetchPosts();
   }, [setUserInfo]);
 
   const username = userInfo?.user?.username;
@@ -61,14 +65,14 @@ export default function IndexPage() {
             <p className="mt-4 text-[20px]">Username: {username}</p>
             <p className="mt-4 text-[20px]">Email: {userInfo?.user?.email}</p>
             <p className="mt-4 text-[20px]">Date Joined:  
-          <time> {formatISO9075(new Date(userInfo?.user?.createdAt || null))}</time>
-          </p>
+              <time>{formatISO9075(new Date(userInfo?.user?.createdAt || null))}</time>
+            </p>
             <p className="mt-4 text-[20px]">Availability: {userInfo?.user?.available ? "Yes" : "No"}</p>
           </div>
         ) : (
           <div className="flex flex-col gap-3 w-[80%] h-[60vh] justify-center items-center">
             <h2>You are not logged in, Please login to continue enjoying this app!</h2>
-            <h2>And if you have not yet register kindly do that now.</h2>
+            <h2>And if you have not yet registered, kindly do that now.</h2>
             <div className="mt-4">
               <Link to={'/login'} className="bg-[#51B73B] py-[8px] px-[35px] rounded-xl text-lime-50 text-[18px]">Login Now</Link>
             </div>
@@ -76,9 +80,13 @@ export default function IndexPage() {
         )}
       </div>
       <div className="md:w-[60%] w-full justify-center p-5 flex gap-4 flex-col">
-        {posts.map(post => (
-          <Post key={post._id} {...post} />
-        ))}
+        {loading ? (
+          <div className="text-center text-xl">Fetching latest posts...</div>
+        ) : (
+          posts.map(post => (
+            <Post key={post._id} {...post} />
+          ))
+        )}
       </div>
     </div>
   );
