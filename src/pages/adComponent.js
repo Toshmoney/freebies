@@ -18,7 +18,7 @@ const AdComponent = ({ adSlot }) => {
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             </Helmet>
             <ins className="adsbygoogle"
-                style={{ display: 'block',  width: '100%', height: '100px' }}
+                style={{ display: 'block',  width: '100%', height: '90px' }}
                 data-ad-client="ca-pub-6119902969420616"
                 data-ad-slot={adSlot}
                 data-ad-format="auto"

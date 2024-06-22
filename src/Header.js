@@ -43,16 +43,16 @@ export default function Header() {
         {username ? (
           <div className="flex gap-5 items-center text-[16px] md:flex-row flex-col">
             <h5>Welcome {username}</h5>
-            <Link to="/create">Create new post</Link>
-            <Link to="/profile">Profile</Link>
-            <Link to="/posts">Posts</Link>
-            <Link to="/earnings">Earnings</Link>
+            <a href="/create">Create new post</a>
+            <a href="/profile">Profile</a>
+            <a href="/posts">Posts</a>
+            <a href="/earnings">Earnings</a>
             <a onClick={logout} href="/login" className="text-[red] cursor-pointer">Logout ({username})</a>
           </div>
         ) : (
           <div className="flex gap-5 text-[18px]">
-            <Link to="/login" className="hover:text-[#51B73B]">Login</Link>
-            <Link to="/register" className="hover:text-[#51B73B]">Register on Homeworktips</Link>
+            <a href="/login" className="hover:text-[#51B73B]">Login</a>
+            <a href="/register" className="hover:text-[#51B73B]">Register on Homeworktips</a>
           </div>
         )}
       </nav>
