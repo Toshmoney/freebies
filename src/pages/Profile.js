@@ -1,12 +1,22 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 export default function Profile() {
   const { userInfo } = useContext(UserContext);
 
   return (
     <div className="flex flex-col items-center w-full gap-5 py-10 ">
+      {/* SEO Settings... Don't touch it oo */}
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>My Profile</title>
+                <meta name="description" content='User Profile details' />
+                
+      </Helmet>
+
+      {/* End of SEO Settings... Don't touch it oo */}
       <h2 className='text-2xl font-semibold'>Homeworktips User Profile</h2>
       <div className='flex flex-col gap-5'>
         <div>

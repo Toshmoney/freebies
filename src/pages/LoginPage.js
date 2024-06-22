@@ -3,6 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {Helmet} from "react-helmet";
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -46,6 +47,16 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col w-full justify-center h-[87vh] items-center gap-5">
+      {/* SEO Settings... Don't touch it oo */}
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>Login Page | Homeworktips</title>
+                <meta name="description" content="Home work tips login page" />
+                <link rel="canonical" href="http://homeworktips.info/login" />
+      </Helmet>
+
+      {/* End of SEO Settings... Don't touch it oo */}
+
       <ToastContainer />
       <form className="flex flex-col md:w-[50%] w-full justify-center items-center gap-5" onSubmit={login}>
         <h1 className="text-[23px]">Please Login</h1>

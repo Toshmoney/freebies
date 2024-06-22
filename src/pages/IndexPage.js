@@ -53,6 +53,7 @@ export default function IndexPage() {
 
   return (
     <div className="flex w-full md:flex-row flex-col">
+      
       <div className="md:w-[40%] justify-center w-full md:flex hidden">
         {userInfo ? (
           <div className="w-[80%] p-4 h-[50vh] justify-center md:flex flex-col m-[70px]">

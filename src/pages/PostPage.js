@@ -5,7 +5,7 @@ import { UserContext } from "../UserContext";
 import { Link } from 'react-router-dom';
 import Comments from './Comment';
 import { toast } from 'react-toastify';
-import Footer from "../Footer";
+import { Helmet } from "react-helmet";
 
 export default function PostPage() {
   const [postInfo, setPostInfo] = useState(null);
@@ -36,6 +36,16 @@ export default function PostPage() {
 
   return (
     <div className="post-page w-[100%] flex flex-col gap-2 items-center mt-5">
+      {/* SEO Settings... Don't touch it oo */}
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>{postInfo.title}</title>
+                <meta name="description" content={postInfo.summary} />
+                <link rel="canonical" href={`https://homeworktips.info/${id}`} />
+      </Helmet>
+
+      {/* End of SEO Settings... Don't touch it oo */}
+
       <h1 className="md:text-2xl font-semibold m-2 text-center text-xl">{postInfo.title}</h1>
       <time className="text-lime-500">{formatISO9075(new Date(postInfo.createdAt))}</time>
       <div className="text-[16px] font-semibold text-gray-400">Views {postInfo.views}</div>
