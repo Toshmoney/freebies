@@ -14,10 +14,9 @@ export default function PostPage() {
   // const { id: slug } = useParams(); 
   const { id } = useParams();
 
-  console.log("post url:  " + id);
 
   useEffect(() => {
-    fetch(`https://homeworktips-22mg.onrender.com/post/${id}`)
+    fetch(`https://freebiesbackend.onrender.com/post/${id}`)
       .then(response => {
         if (response.ok) {
           response.json().then(postInfo => {
@@ -65,12 +64,11 @@ export default function PostPage() {
             </svg>
             Edit this post
           </Link>
-      <div className="text-[16px] font-semibold text-gray-400">Earnings: {postInfo.reward}</div>
 
         </div>
       )}
       <div className="my-4">
-        <img src={`https://homeworktips-22mg.onrender.com/uploads/${postInfo.image}`} alt={postInfo.title} />
+        <img src={`https://freebiesbackend.onrender.com/uploads/${postInfo.image}`} alt={postInfo.title} />
       </div>
       <div className="flex w-full items-center justify-center">
         <div className="flex flex-col w-[80%] gap-3" dangerouslySetInnerHTML={{ __html: postInfo.content }} />

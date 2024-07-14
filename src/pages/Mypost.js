@@ -11,7 +11,7 @@ export default function MyPosts() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch('https://homeworktips-22mg.onrender.com/user/my-posts', {
+        const response = await fetch('https://freebiesbackend.onrender.com/user/my-posts', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }

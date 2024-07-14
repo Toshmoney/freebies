@@ -17,7 +17,7 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const response = await fetch('https://homeworktips-22mg.onrender.com/user/login', {
+      const response = await fetch('https://freebiesbackend.onrender.com/user/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
         headers: { 'Content-Type': 'application/json' },
@@ -50,8 +50,8 @@ export default function LoginPage() {
       {/* SEO Settings... Don't touch it oo */}
       <Helmet>
                 <meta charSet="utf-8" />
-                <title>Login Page | Homeworktips</title>
-                <meta name="description" content="Home work tips login page" />
+                <title>Login Page | Freebiestech</title>
+                <meta name="description" content="Freebiestech login page" />
                 <link rel="canonical" href="http://homeworktips.info/login" />
       </Helmet>
 

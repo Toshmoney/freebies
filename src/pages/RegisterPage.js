@@ -27,7 +27,7 @@ export default function RegisterPage() {
     }
 
     try {
-      const response = await fetch('https://homeworktips-22mg.onrender.com/user/register', {
+      const response = await fetch('https://freebiesbackend.onrender.com/user/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, email, password }),
@@ -53,7 +53,7 @@ export default function RegisterPage() {
       {/* SEO Settings... Don't touch it oo */}
       <Helmet>
                 <meta charSet="utf-8" />
-                <title>Sign Up Page | Homeworktips</title>
+                <title>Sign Up Page | Freebiestech</title>
                 <meta name="description" content="Home work tips Registration page" />
                 <link rel="canonical" href="http://homeworktips.info/register" />
       </Helmet>

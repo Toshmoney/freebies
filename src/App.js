@@ -14,6 +14,8 @@ import UpdateProfile from "./pages/Updateprofile";
 import MyPosts from "./pages/Mypost";
 import EarningsPage from "./pages/Userearnings";
 import AuthorProfile from "./pages/Authorprofile";
+import About from "./pages/About";
+import Privacy from "./pages/Privacy";
 
 function App() {
   return (
@@ -32,7 +34,8 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/update-profile" element={<UpdateProfile />} />
           <Route path="/posts" element={<MyPosts />} />
-          <Route path="/earnings" element={<EarningsPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/privacy-policy" element={<Privacy />} />
         </Route>
       </Routes>
       </Router>

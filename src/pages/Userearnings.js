@@ -11,7 +11,7 @@ export default function EarningsPage() {
   useEffect(() => {
     const fetchEarnings = async () => {
       try {
-        const response = await fetch('https://homeworktips-22mg.onrender.com/user/earnings', {
+        const response = await fetch('https://freebiesbackend.onrender.com/user/earnings', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }

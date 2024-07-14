@@ -11,7 +11,7 @@ function Comments({ postId }) {
   console.log("comment page " + id);
 
   useEffect(() => {
-    fetch(`https://homeworktips-22mg.onrender.com/post/${id}/comments`)
+    fetch(`https://freebiesbackend.onrender.com/post/${id}/comments`)
       .then(response => response.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -33,7 +33,7 @@ function Comments({ postId }) {
       return;
     }
 
-    const response = await fetch(`https://homeworktips-22mg.onrender.com/post/${id}/comment`, {
+    const response = await fetch(`https://freebiesbackend.onrender.com/post/${id}/comment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ function Comments({ postId }) {
       return;
     }
 
-    const response = await fetch(`https://homeworktips-22mg.onrender.com/post/${id}/comment/${replyingTo}/reply`, {
+    const response = await fetch(`https://freebiesbackend.onrender.com/post/${id}/comment/${replyingTo}/reply`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

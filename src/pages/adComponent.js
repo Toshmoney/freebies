@@ -7,7 +7,7 @@ const AdComponent = ({ adSlot }) => {
             if (window) {
                 (window.adsbygoogle = window.adsbygoogle || []).push({});
             }
-        }, 100); // Delay by 100ms
+        }, 100);
 
         return () => clearTimeout(timer);
     }, []);
@@ -19,7 +19,7 @@ const AdComponent = ({ adSlot }) => {
             </Helmet>
             <ins className="adsbygoogle"
                 style={{ display: 'block',  width: '100%', height: '90px' }}
-                data-ad-client="ca-pub-6119902969420616"
+                data-ad-client="ca-pub-1754293140846060"
                 data-ad-slot={adSlot}
                 data-ad-format="auto"
                 data-full-width-responsive="true"></ins>

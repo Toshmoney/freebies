@@ -13,7 +13,7 @@ const AuthorProfile = () => {
 
   const fetchAuthor = useCallback(async () => {
     try {
-      const response = await fetch(`https://homeworktips-22mg.onrender.com/writer/${id}`);
+      const response = await fetch(`https://freebiesbackend.onrender.com/writer/${id}`);
       if (response.ok) {
         const data = await response.json();
         setAuthor(data);
@@ -30,7 +30,7 @@ const AuthorProfile = () => {
 
   const fetchAuthorPosts = useCallback(async () => {
     try {
-      const response = await fetch(`https://homeworktips-22mg.onrender.com/author/${id}/posts`);
+      const response = await fetch(`https://freebiesbackend.onrender.com/author/${id}/posts`);
       if (response.ok) {
         const data = await response.json();
         setPosts(data);
@@ -49,7 +49,7 @@ const AuthorProfile = () => {
 
   const handleFollow = async () => {
     try {
-      const response = await fetch(`https://homeworktips-22mg.onrender.com/author/${id}/follow`, {
+      const response = await fetch(`https://freebiesbackend.onrender.com/author/${id}/follow`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const AuthorProfile = () => {
 
   const handleUnfollow = async () => {
     try {
-      const response = await fetch(`https://homeworktips-22mg.onrender.com/author/${id}/unfollow`, {
+      const response = await fetch(`https://freebiesbackend.onrender.com/author/${id}/unfollow`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ const AuthorProfile = () => {
     <div className="w-full flex flex-col justify-center items-center gap-2 mt-5">
       <div>
         <img
-          src={author.profilePicture ? `https://homeworktips-22mg.onrender.com/uploads/${author.profilePicture}` : profilepic}
+          src={author.profilePicture ? `https://freebiesbackend.onrender.com/uploads/${author.profilePicture}` : profilepic}
           alt="Profile"
           className="h-[20vh] rounded-full border-2 border-[#51B73B]"
         />

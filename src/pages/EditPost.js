@@ -12,7 +12,7 @@ export default function EditPost() {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    fetch(`https://homeworktips-22mg.onrender.com/post/${id}`)  
+    fetch(`https://freebiesbackend.onrender.com/post/${id}`)  
       .then(response => response.json())
       .then(postInfo => {
         setTitle(postInfo.title);
@@ -36,7 +36,7 @@ export default function EditPost() {
 
     const token = localStorage.getItem('token'); // Retrieve token from localStorage
 
-    const response = await fetch(`https://homeworktips-22mg.onrender.com/post/${id}`, {
+    const response = await fetch(`https://freebiesbackend.onrender.com/post/${id}`, {
       method: 'PATCH',
       body: data,
       headers: {

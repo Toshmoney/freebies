@@ -34,7 +34,7 @@ export default function CreatePost() {
     }
 
     try {
-      const response = await fetch('https://homeworktips-22mg.onrender.com/create-post', {
+      const response = await fetch('https://freebiesbackend.onrender.com/create-post', {
         method: 'POST',
         body: data,
         headers: {
