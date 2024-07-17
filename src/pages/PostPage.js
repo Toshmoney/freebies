@@ -20,6 +20,7 @@ export default function PostPage() {
       .then(response => {
         if (response.ok) {
           response.json().then(postInfo => {
+            console.log(postInfo)
             setPostInfo(postInfo);
           });
         } else {

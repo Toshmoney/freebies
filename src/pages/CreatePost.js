@@ -1,4 +1,3 @@
-// import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
@@ -10,22 +9,22 @@ export default function CreatePost() {
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');
-  const [files, setFiles] = useState(null);
+  const [file, setFile] = useState(null);
   const [redirect, setRedirect] = useState(false);
 
   async function createNewPost(ev) {
     ev.preventDefault();
 
-    if (!title || !summary || !content || !files) {
+    if (!title || !summary || !content || !file) {
       toast.error("All fields are required!");
       return;
     }
 
     const data = new FormData();
-    data.set('title', title);
-    data.set('summary', summary);
-    data.set('content', content);
-    data.set('image', files[0]);
+    data.append('title', title);
+    data.append('summary', summary);
+    data.append('content', content);
+    data.append('image', file);
 
     const token = localStorage.getItem("token");
     if (!token) {
@@ -63,18 +62,18 @@ export default function CreatePost() {
     <form onSubmit={createNewPost} className="w-full flex flex-col min-h-[100vh] items-center mt-10 pb-10">
       <ToastContainer />
       <h1 className="text-xl my-5 font-semibold">Create New Post</h1>
-      <input type="title"
+      <input type="text"
              placeholder={'Title'}
              value={title}
              onChange={ev => setTitle(ev.target.value)}
              className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg border border-[#51B73B] outline-2 outline-[#51B73B]" />
-      <input type="summary"
+      <input type="text"
              placeholder={'Summary'}
              value={summary}
              onChange={ev => setSummary(ev.target.value)}
              className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg border border-[#51B73B] outline-2 outline-[#51B73B] mt-3" />
       <input type="file"
-             onChange={ev => setFiles(ev.target.files)}
+             onChange={ev => setFile(ev.target.files[0])}
              className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg border-[#51B73B] outline-2 outline-[#51B73B] my-5" />
       <Editor value={content} onChange={setContent} />
       <button className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg bg-[#51B73B] outline-2 mt-5 text-lime-50 text-xl hover:bg-[#97c98c]">Create post</button>

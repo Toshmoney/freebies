@@ -1,11 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import Post from "../Post";
-import { formatISO9075 } from "date-fns";
 import { UserContext } from "../UserContext";
-import { Link } from "react-router-dom";
 
 export default function IndexPage() {
-  const { setUserInfo, userInfo } = useContext(UserContext);
+  const { setUserInfo } = useContext(UserContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -52,7 +50,6 @@ export default function IndexPage() {
     fetchPosts();
   }, [setUserInfo]);
 
-  const username = userInfo?.user?.username;
 
   return (
     <div className="flex w-full md:flex-row flex-col">
