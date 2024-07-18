@@ -11,6 +11,7 @@ export default function CreatePost() {
   const [content, setContent] = useState('');
   const [file, setFile] = useState(null);
   const [redirect, setRedirect] = useState(false);
+  const [isclick, setisclick] = useState(false)
 
   async function createNewPost(ev) {
     ev.preventDefault();
@@ -19,6 +20,8 @@ export default function CreatePost() {
       toast.error("All fields are required!");
       return;
     }
+
+    setisclick(true)
 
     const data = new FormData();
     data.append('title', title);
@@ -46,11 +49,14 @@ export default function CreatePost() {
       if (response.ok) {
         toast.success('Post created successfully!');
         setRedirect(true);
+        setisclick(false)
       } else {
         toast.error(result.error || 'Failed to create post');
       }
     } catch (error) {
       toast.error('An error occurred. Please try again.');
+      setisclick(false)
+
     }
   }
 
@@ -76,7 +82,7 @@ export default function CreatePost() {
              onChange={ev => setFile(ev.target.files[0])}
              className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg border-[#51B73B] outline-2 outline-[#51B73B] my-5" />
       <Editor value={content} onChange={setContent} />
-      <button className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg bg-[#51B73B] outline-2 mt-5 text-lime-50 text-xl hover:bg-[#97c98c]">Create post</button>
+      <button className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg bg-[#51B73B] outline-2 mt-5 text-lime-50 text-xl hover:bg-[#97c98c]">{isclick ? "Pls wait ..": "Create post"}</button>
     </form>
   );
 }
