@@ -6,6 +6,8 @@ export default function IndexPage() {
   const { setUserInfo } = useContext(UserContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 12;
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -50,17 +52,40 @@ export default function IndexPage() {
     fetchPosts();
   }, [setUserInfo]);
 
+  // Calculate total pages
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+
+  // Get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
-    <div className="flex w-full md:flex-row flex-col">
+    <div className="flex w-full flex-col">
       <div className="w-full justify-center p-5 grid grid-cols-1 gap-5 md:grid-cols-3">
         {loading ? (
           <div className="text-center text-xl">Fetching latest posts...</div>
         ) : (
-          posts.map(post => (
+          currentPosts.map(post => (
             <Post key={post._id} {...post} />
           ))
         )}
+      </div>
+      <div className="w-full flex justify-center mt-5">
+        {Array.from({ length: totalPages }, (_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => handlePageChange(index + 1)}
+            className={`px-3 py-1 mx-1 rounded ${currentPage === index + 1 ? 'bg-[#51B73B] text-white' : 'bg-gray-200'}`}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
     </div>
   );
