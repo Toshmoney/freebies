@@ -4,7 +4,7 @@ export default function Post({_id,title,summary,image,content,createdAt,author, 
 
   return (
     <div className="post bg-white gap-4 md:p-10 p-4 flex flex-col justify-center rounded-br-[20%] max-sm:w-[100%]">
-      <div className="flex flex-col gap-2 p-2">
+      <div className="flex flex-col gap-2 p-2 w-full">
         <Link to={`/${slug}`}>
         <h2 className="text-[26px] capitalize font-[500] hover:underline">{title}</h2>
         </Link>

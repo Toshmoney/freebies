@@ -65,7 +65,7 @@ export default function IndexPage() {
 
   return (
     <div className="flex w-full flex-col">
-      <div className="w-full justify-center p-5 grid grid-cols-1 gap-5 md:grid-cols-3">
+      <div className="w-full justify-center p-2 grid grid-cols-1 gap-5 md:grid-cols-3">
         {loading ? (
           <div className="text-center text-xl">Fetching latest posts...</div>
         ) : (

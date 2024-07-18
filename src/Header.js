@@ -44,7 +44,7 @@ export default function Header() {
             <h5>Welcome {username}</h5>
             <a href="/create">Create new post</a>
             <a href="/profile">Profile</a>
-            <a onClick={logout} href="/login" className="text-[red] cursor-pointer">Logout ({username})</a>
+            <a onClick={logout} href="/" className="text-[red] cursor-pointer">Logout ({username})</a>
           </div>
         ) : (
           <div className="flex gap-5 text-[15px]">
