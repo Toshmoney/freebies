@@ -12,7 +12,7 @@ const About = () => {
       <img src={img} alt="" className="h-20 pl-14 mt-11 max-sm:pl-8" />
       <div className="flex flex-col gap-[30px] pl-14  mt-11 max-sm:pl-4">
         <p className="w-[86vw] max-sm:w-[90vw]">
-          Freebiestech is more than just a blogsite, it’s an idea borne out of the
+          Freebiestech is more than just a blog site, it’s an idea borne out of the
           author’s disdain for scam and fraudulent platforms that promise one
           thing and at the end deliver something else in the bid to defraud
           innocent users.

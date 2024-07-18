@@ -49,7 +49,7 @@ export default function Header() {
         ) : (
           <div className="flex gap-5 text-[15px]">
             <a href="/" className="hover:text-[#51B73B]">Home</a>
-            <a href="/disclaimer" className="hover:text-[#51B73B]">Disclaimer</a>
+            {/* <a href="/disclaimer" className="hover:text-[#51B73B]">Disclaimer</a> */}
             <a href="/about" className="hover:text-[#51B73B]">About</a>
             <a href="/privacy-policy" className="hover:text-[#51B73B]">Privacy Policy</a>
             <a href="/contact" className="hover:text-[#51B73B]">Contact Us</a>

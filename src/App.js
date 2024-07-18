@@ -12,10 +12,10 @@ import EditPost from "./pages/EditPost";
 import Profile from "./pages/Profile";
 import UpdateProfile from "./pages/Updateprofile";
 import MyPosts from "./pages/Mypost";
-import EarningsPage from "./pages/Userearnings";
 import AuthorProfile from "./pages/Authorprofile";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
+import ContactPage from "./pages/Contact";
 
 function App() {
   return (
@@ -35,6 +35,7 @@ function App() {
           <Route path="/update-profile" element={<UpdateProfile />} />
           <Route path="/posts" element={<MyPosts />} />
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy-policy" element={<Privacy />} />
         </Route>
       </Routes>

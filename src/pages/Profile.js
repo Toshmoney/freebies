@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { UserContext } from '../UserContext';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import profilepic from "../assets/images/logo123.jpg"
+import profilepic from "../assets/images/freebiestech.png"
 
 export default function Profile() {
   const { userInfo } = useContext(UserContext);

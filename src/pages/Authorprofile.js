@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import profilepic from "../assets/images/logo123.jpg";
+import profilepic from "../assets/images/freebiestech.png";
 import { UserContext } from "../UserContext";
 import Post from "../Post";
 
