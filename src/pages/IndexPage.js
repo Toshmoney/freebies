@@ -1,12 +1,13 @@
 import { useEffect, useState, useContext } from "react";
 import Post from "../Post";
 import { UserContext } from "../UserContext";
+import ReactPaginate from 'react-paginate';
 
 export default function IndexPage() {
   const { setUserInfo } = useContext(UserContext);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const postsPerPage = 12;
 
   useEffect(() => {
@@ -52,17 +53,14 @@ export default function IndexPage() {
     fetchPosts();
   }, [setUserInfo]);
 
-  // Calculate total pages
-  const totalPages = Math.ceil(posts.length / postsPerPage);
-
-  // Get current posts
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  // Calculate the range of posts for the current page
+  const startIndex = currentPage * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const currentPosts = posts.slice(startIndex, endIndex);
 
   // Handle page change
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
   };
 
   return (
@@ -77,15 +75,21 @@ export default function IndexPage() {
         )}
       </div>
       <div className="w-full flex justify-center mt-5">
-        {Array.from({ length: totalPages }, (_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => handlePageChange(index + 1)}
-            className={`px-3 py-1 mx-1 rounded ${currentPage === index + 1 ? 'bg-[#51B73B] text-white' : 'bg-gray-200'}`}
-          >
-            {index + 1}
-          </button>
-        ))}
+        <ReactPaginate
+          previousLabel={'Previous'}
+          nextLabel={'Next'}
+          breakLabel={'...'}
+          pageCount={Math.ceil(posts.length / postsPerPage)}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageChange}
+          containerClassName={'flex justify-center space-x-2 mt-5'}
+          previousLinkClassName={'px-3 py-1 bg-gray-200 rounded hover:bg-gray-300'}
+          nextLinkClassName={'px-3 py-1 bg-gray-200 rounded hover:bg-gray-300'}
+          breakLinkClassName={'px-3 py-1'}
+          pageLinkClassName={'px-3 py-1 bg-gray-200 rounded hover:bg-gray-300'}
+          activeLinkClassName={'bg-[#51B73B] text-white'}
+        />
       </div>
     </div>
   );

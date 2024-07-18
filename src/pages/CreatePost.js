@@ -11,7 +11,7 @@ export default function CreatePost() {
   const [content, setContent] = useState('');
   const [file, setFile] = useState(null);
   const [redirect, setRedirect] = useState(false);
-  const [isclick, setisclick] = useState(false);
+  const [isClickDisabled, setIsClickDisabled] = useState(false);
 
   async function createNewPost(ev) {
     ev.preventDefault();
@@ -21,7 +21,7 @@ export default function CreatePost() {
       return;
     }
 
-    setisclick(true);
+    setIsClickDisabled(true);
 
     const data = new FormData();
     data.append('title', title);
@@ -32,7 +32,7 @@ export default function CreatePost() {
     const token = localStorage.getItem("token");
     if (!token) {
       toast.error("You must be logged in to create a post.");
-      setisclick(false);
+      setIsClickDisabled(false);
       return;
     }
 
@@ -52,11 +52,11 @@ export default function CreatePost() {
         setRedirect(true);
       } else {
         toast.error(result.error || 'Failed to create post');
-        setisclick(false);
+        setIsClickDisabled(false);
       }
     } catch (error) {
       toast.error('An error occurred. Please try again.');
-      setisclick(false);
+      setIsClickDisabled(false);
     }
   }
 
@@ -83,9 +83,9 @@ export default function CreatePost() {
              className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg border-[#51B73B] outline-2 outline-[#51B73B] my-5" />
       <Editor value={content} onChange={setContent} />
       <button type="submit"
-              className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg bg-[#51B73B] outline-2 mt-5 text-lime-50 text-xl hover:bg-[#97c98c]"
-              disabled={isclick}>
-        {isclick ? "Please wait..." : "Create post"}
+              className={`md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg ${isClickDisabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#51B73B] cursor-pointer'} outline-2 mt-5 text-lime-50 text-xl ${isClickDisabled ? '' : 'hover:bg-[#97c98c]'}`}
+              disabled={isClickDisabled}>
+        {isClickDisabled ? "Please wait..." : "Create post"}
       </button>
     </form>
   );
