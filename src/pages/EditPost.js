@@ -8,7 +8,6 @@ export default function EditPost() {
   const [author, setAuthor] = useState('');
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');
-  const [files, setFiles] = useState('');
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
@@ -30,17 +29,15 @@ export default function EditPost() {
     data.set('content', content);
     data.set('author', author);
     data.set('slug', id); 
-    if (files?.[0]) {
-      data.set('file', files[0]);
-    }
+    
 
-    const token = localStorage.getItem('token'); // Retrieve token from localStorage
+    const token = localStorage.getItem('token'); 
 
     const response = await fetch(`https://freebiesbackend.onrender.com/post/${id}`, {
       method: 'PATCH',
       body: data,
       headers: {
-        'Authorization': `Bearer ${token}` // Include the token in headers
+        'Authorization': `Bearer ${token}` 
       }
     });
 
@@ -69,9 +66,7 @@ export default function EditPost() {
              value={summary}
              onChange={ev => setSummary(ev.target.value)}
              className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg border border-[#51B73B] outline-2 outline-[#51B73B] mt-3" />
-      <input type="file"
-             onChange={ev => setFiles(ev.target.files)}
-             className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg border-[#51B73B] outline-2 outline-[#51B73B] my-5" />
+
       <Editor onChange={setContent} value={content} />
       <button className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg bg-[#51B73B] outline-2 mt-5 text-lime-50 text-xl hover:bg-[#97c98c]">Update post</button>
     </form>
