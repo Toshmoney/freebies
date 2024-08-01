@@ -9,14 +9,13 @@ export default function CreatePost() {
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');
-  const [file, setFile] = useState(null);
   const [redirect, setRedirect] = useState(false);
   const [isClickDisabled, setIsClickDisabled] = useState(false);
 
   async function createNewPost(ev) {
     ev.preventDefault();
 
-    if (!title || !summary || !content || !file) {
+    if (!title || !summary || !content) {
       toast.error("All fields are required!");
       return;
     }
@@ -27,7 +26,6 @@ export default function CreatePost() {
     data.append('title', title);
     data.append('summary', summary);
     data.append('content', content);
-    data.append('image', file);
 
     const token = localStorage.getItem("token");
     if (!token) {
@@ -78,9 +76,6 @@ export default function CreatePost() {
              value={summary}
              onChange={ev => setSummary(ev.target.value)}
              className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg border border-[#51B73B] outline-2 outline-[#51B73B] mt-3" />
-      <input type="file"
-             onChange={ev => setFile(ev.target.files[0])}
-             className="md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg border-[#51B73B] outline-2 outline-[#51B73B] my-5" />
       <Editor value={content} onChange={setContent} />
       <button type="submit"
               className={`md:w-[50%] w-[80%] h-[45px] px-3 rounded-lg ${isClickDisabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#51B73B] cursor-pointer'} outline-2 mt-5 text-lime-50 text-xl ${isClickDisabled ? '' : 'hover:bg-[#97c98c]'}`}

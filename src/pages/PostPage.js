@@ -68,9 +68,9 @@ export default function PostPage() {
 
         </div>
       )}
-      <div className="my-4">
+      {/* <div className="my-4">
         <img src={`https://freebiesbackend.onrender.com/uploads/${postInfo.image}`} alt={postInfo.title} />
-      </div>
+      </div> */}
       <div className="flex w-full items-center justify-center">
         <div className="flex flex-col w-[80%] gap-3" dangerouslySetInnerHTML={{ __html: postInfo.content }} />
       </div>
